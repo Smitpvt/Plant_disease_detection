@@ -1,9 +1,0 @@
-flask
-<<<<<<< HEAD
-tensorflow-cpu 
-=======
-tensorflow-cpu
->>>>>>> cec7369 (how are you)
-opencv-python-headless
-numpy
-gunicorn
