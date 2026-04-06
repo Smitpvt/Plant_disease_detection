@@ -6,7 +6,7 @@ from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
 
-model = load_model("model.h5")
+model = load_model("model.h5",compile=False)
 
 # Classes
 classes = [
