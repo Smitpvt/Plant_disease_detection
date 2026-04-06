@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <h2>🌱 Plant Disease Detection</h2>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="#">Predict</a>
+        <a href="#">About</a>
+    </div>
+</div>
+
+<!-- Main -->
+<div class="container">
+
+    <h1>Prediction Result</h1>
+    <p class="subtitle">Our AI model analyzed your leaf image</p>
+
+    <div class="grid">
+
+        <!-- Left: Image -->
+        <div class="card">
+            <h3>Input Leaf Image</h3>
+            <img src="{{ img_path }}" class="leaf-img">
+        </div>
+
+        <!-- Center: Prediction -->
+        <div class="card highlight">
+            <h3>Disease Detected</h3>
+            <h2 class="result">{{ prediction }}</h2>
+
+            <p><strong>Confidence:</strong> {{ confidence }}%</p>
+
+            <div class="desc">
+                <h4>Description:</h4>
+                <p>Leaf shows visible disease symptoms like spots, discoloration and damage.</p>
+
+                <h4>Suggested Solution:</h4>
+                <ul>
+                    <li>Remove affected leaves</li>
+                    <li>Use proper fungicide</li>
+                    <li>Maintain air circulation</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right: Top 3 -->
+        <div class="card">
+            <h3>Top Predictions</h3>
+
+            {% for item in top3 %}
+            <div class="prediction-item">
+                <p>{{ item.name }} - {{ item.conf }}%</p>
+                <div class="bar">
+                    <div class="fill" style="width: {{ item.conf }}%;"></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <br>
+    <a href="/" class="back-btn">⬅ Try Another</a>
+
+</div>
+
+</body>
+</html>
